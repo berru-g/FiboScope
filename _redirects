@@ -1,0 +1,6 @@
+# Redirection HTTP vers HTTPS
+http://fiboscope.netlify.app/* https://www.fiboscope.netlify.app/:splat 301
+http://www.fiboscope.netlify.app/* https://www.fiboscope.netlify.app/:splat 301
+
+# Redirection HTTPS sans www vers HTTPS avec www
+https://fiboscope.netlify.app/* https://www.fiboscope.netlify.app/:splat 301
