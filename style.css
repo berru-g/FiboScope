@@ -280,7 +280,7 @@ a:hover {
 img {
     display: block;
     margin: 0 auto;
-    max-width: 90%;
+    max-width: 100%;
     height: auto;
     transform: translateY(-5px);
     box-shadow: 0 2px 8px var(--shadow-color);
