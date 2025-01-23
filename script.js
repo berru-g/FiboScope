@@ -208,6 +208,11 @@ document.getElementById('calculate').addEventListener('click', async () => {
         const priceChange24h = data.market_data.price_change_percentage_24h.toFixed(2);
         const priceChange7d = data.market_data.price_change_percentage_7d.toFixed(2);
 
+        resultDiv.className = "result"; // Reset any existing class
+        setTimeout(() => {
+            resultDiv.classList.add("show");
+        }, 100);
+
         // Mise en forme du résultat
         resultDiv.innerHTML = `
         <p style="display: flex; justify-content: space-between; align-items: center;">
