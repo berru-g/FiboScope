@@ -1,4 +1,4 @@
-// dark mode
+// Récupération du mode depuis le localStorage
 const currentTheme = localStorage.getItem('theme') || 'dark';
 document.body.classList.add(currentTheme + '-mode');
 
@@ -22,8 +22,7 @@ themeToggleButton.addEventListener('click', () => {
     }
 });
 
-// gestion de l'api coingecko
-// Fonction pour charger le cache depuis localStorage
+// Fonction pour charger le cache depuis localStorage calcul du fiboscope
 function loadCache() {
     const cache = localStorage.getItem('tokenCache');
     return cache ? JSON.parse(cache) : {
@@ -133,7 +132,11 @@ function loadCache() {
         "bal": "balancer",
         "band": "band-protocol",
         "akash": "akash-network",
-        "rsr": "reserve-rights-token"
+        "rsr": "reserve-rights-token",
+        "jupiter": "jupiter-exchange-solana",
+        "tao": "bittensor",
+        "inj": "injective-protocol",
+        "render": "render-token"
     };
 }
 
@@ -207,35 +210,39 @@ document.getElementById('calculate').addEventListener('click', async () => {
 
         // Mise en forme du résultat
         resultDiv.innerHTML = `
-                <p style="display: flex; justify-content: space-between; align-items: center;">
-        <span><strong>Token:</strong> ${data.name} (${data.symbol.toUpperCase()})</span>
-        <img src="${data.image.small}" alt="${data.name} logo" style="width: 50px; height: 50px; margin-left: 10px;"></p>
-        <p><strong>Prix actuel:</strong> $${currentPrice.toFixed(4)}</p>
-        <p><strong>Plus bas historique:</strong> $${allTimeLow.toFixed(4)}</p>
-        <p><strong>Plus haut historique:</strong> $${allTimeHigh.toFixed(4)}</p>
-        <p><strong>${data.name} est à </strong> 
-            <span class="percentage ${percentageClass}">
-                ${percentage.toFixed(2)}%
-            </span>
-            <strong> de sa capacité maximale</strong><br>
-        </p>
-        <p><strong>Rang :</strong> ${marketRank}</p>
-        <p><strong>Tokens en circulation :</strong> ${supplyRatio.toFixed(2)}%</p>
-        
-        <p><strong>Sur 24h :</strong> ${priceChange24h}%</p>
-        <p><strong>Sur 7 jours :</strong> ${priceChange7d}%</p>
-        <span> Investir = ${percentageText}</span>
+        <p style="display: flex; justify-content: space-between; align-items: center;">
+<span><strong>Token :</strong> ${data.name} (${data.symbol.toUpperCase()})</span>
+<img src="${data.image.small}" alt="${data.name} logo" style="width: 50px; height: 50px; margin-left: 10px;"></p>
+<p><strong>Prix actuel :</strong> $${currentPrice.toFixed(4)}</p>
+<p><strong>ATL :</strong> $${allTimeLow.toFixed(4)}</p>
+<p><strong>ATH :</strong> $${allTimeHigh.toFixed(4)}</p>
+<p><strong>${data.name} est à </strong> 
+    <span class="percentage ${percentageClass}">
+        ${percentage.toFixed(2)}%
+    </span>
+    <strong> de son potentiel max ou ATH</strong><br>
+</p>
+<p><strong>Rang :</strong> ${marketRank}</p>
+<p><strong>Tokens en circulation :</strong> ${supplyRatio.toFixed(2)}%</p>
 
-        <p><a href="https://www.coingecko.com/en/coins/${data.id}" target="_blank">Voir plus sur CoinGecko</a></p>
-        
+<p><strong>Sur 24h :</strong> ${priceChange24h}%</p>
+<p><strong>Sur 7 jours :</strong> ${priceChange7d}%</p>
 
-    `;
+<p><strong>Écosystème : </strong>${data.platforms && Object.keys(data.platforms).length > 0
+                ? Object.keys(data.platforms).join(', ')
+                : 'Non spécifié'}</p>
+
+<p><strong>Catégorie :</strong> ${data.categories ? data.categories.join(', ') : 'Non spécifiée'}</p>
+
+<p><strong><a href="https://www.coingecko.com/fr/coins/${data.id}" target="_blank">Voir plus sur CoinGecko</a></strong></p>
+
+
+`;
     } catch (error) {
         resultDiv.innerHTML = `<p style="color: red;">Erreur: ${error.message}</p>`;
     }
 });
-
-//share btn
+//shar btn
 document.addEventListener("DOMContentLoaded", () => {
     const shareButton = document.getElementById("shareButton");
     const sharePopup = document.getElementById("sharePopup");
