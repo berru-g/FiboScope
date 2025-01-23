@@ -214,15 +214,21 @@ document.getElementById('calculate').addEventListener('click', async () => {
 <span><strong>Token :</strong> ${data.name} (${data.symbol.toUpperCase()})</span>
 <img src="${data.image.small}" alt="${data.name} logo" style="width: 50px; height: 50px; margin-left: 10px;"></p>
 <p><strong>Prix actuel :</strong> $${currentPrice.toFixed(4)}</p>
-<p><strong>ATL :</strong> $${allTimeLow.toFixed(4)}</p>
-<p><strong>ATH :</strong> $${allTimeHigh.toFixed(4)}</p>
+<p><strong>ATL 📉 </strong> $${allTimeLow.toFixed(4)}</p>
+<p><strong>ATH 📈</strong> $${allTimeHigh.toFixed(4)}</p>
 <p><strong>${data.name} est à </strong> 
     <span class="percentage ${percentageClass}">
         ${percentage.toFixed(2)}%
     </span>
-    <strong> de son potentiel max ou ATH</strong><br>
+    <strong> de son potentiel max </strong><br>
 </p>
 <p><strong>Rang :</strong> ${marketRank}</p>
+<p><strong>Capitalisation :</strong> 
+${data.market_data && data.market_data.market_cap.usd
+                ? `$${data.market_data.market_cap.usd.toLocaleString()}`
+                : 'Non spécifiée'}
+</p>
+
 <p><strong>Tokens en circulation :</strong> ${supplyRatio.toFixed(2)}%</p>
 
 <p><strong>Sur 24h :</strong> ${priceChange24h}%</p>
@@ -234,7 +240,7 @@ document.getElementById('calculate').addEventListener('click', async () => {
 
 <p><strong>Catégorie :</strong> ${data.categories ? data.categories.join(', ') : 'Non spécifiée'}</p>
 
-<p><strong><a href="https://www.coingecko.com/fr/coins/${data.id}" target="_blank">Voir plus sur CoinGecko</a></strong></p>
+<p><strong><a href="https://www.coingecko.com/fr/coins/${data.id}" target="_blank">Voir chart sur CoinGecko</a></strong></p>
 
 
 `;
