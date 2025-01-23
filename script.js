@@ -245,7 +245,7 @@ ${data.market_data && data.market_data.market_cap.usd
 
 <p><strong>Catégorie :</strong> ${data.categories ? data.categories.join(', ') : 'Non spécifiée'}</p>
 
-<p><strong><a href="https://www.coingecko.com/fr/coins/${data.id}" target="_blank">Voir chart sur CoinGecko</a></strong></p>
+<p><strong><a href="https://www.coingecko.com/fr/coins/${data.id}" target="_blank">Voir la chart sur CoinGecko.com</a></strong></p>
 
 
 `;
