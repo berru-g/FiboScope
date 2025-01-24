@@ -133,10 +133,27 @@ function loadCache() {
         "band": "band-protocol",
         "akash": "akash-network",
         "rsr": "reserve-rights-token",
-        "jupiter": "jupiter-exchange-solana",
         "tao": "bittensor",
         "inj": "injective-protocol",
-        "render": "render-token"
+        "render": "render-token",
+        "pepe": "pepe",
+        "woj": "wojak",
+        "floki": "floki",
+        "dogelon": "dogelon-mars",
+        "babyDoge": "baby-doge-coin",
+        "bonk": "bonk",
+        "kishu": "kishu-inu",
+        "shib": "shiba-inu",
+        "jup": "jupiter-exchange-solana",
+        "nano": "nano",
+        "celo": "celo",
+        "imx": "immutable-x",
+        "ilv": "illuvium",
+        "arbitrum": "arbitrum",
+        "op": "optimism",
+        "scrt": "secret",
+        "dusk": "dusk-network"
+
     };
 }
 
