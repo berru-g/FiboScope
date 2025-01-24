@@ -241,41 +241,7 @@ a:hover {
     background-color: #ddd;
 }
 
-/* Popup de partage (ouvre vers le haut) */
-.share-popup {
-    position: absolute;
-    bottom: 80px;
-    /* Positionne le popup au-dessus */
-    right: 50;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px #0d3b66;
-    display: none;
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px;
-    z-index: 1000;
-}
 
-.share-popup button,
-.share-popup a {
-    width: 100%;
-    padding: 10px;
-    font-size: 18px;
-    text-align: center;
-    border: none;
-
-    color: #333;
-    border-radius: 8px;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.share-popup button:hover,
-.share-popup a:hover {
-    background-color: #ddd;
-}
 
 #pub {
     display: block;
