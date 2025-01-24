@@ -64,3 +64,11 @@ tr:hover {
     font-size: 1rem;
     color: #ff6f6f;
 }
+a {
+    text-decoration: none;
+    color: #ab9ff2;
+}
+
+a:hover {
+    color: grey;
+}
