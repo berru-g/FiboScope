@@ -5,7 +5,7 @@ document.body.classList.add(currentTheme + '-mode');
 // Gestion du bouton de bascule
 const themeToggleButton = document.createElement('button');
 themeToggleButton.className = 'theme-toggle';
-themeToggleButton.textContent = 'Light Mode';
+themeToggleButton.textContent = 'Light';
 
 // Ajout du bouton au document
 document.body.appendChild(themeToggleButton);
@@ -13,11 +13,11 @@ document.body.appendChild(themeToggleButton);
 themeToggleButton.addEventListener('click', () => {
     if (document.body.classList.contains('dark-mode')) {
         document.body.classList.replace('dark-mode', 'light-mode');
-        themeToggleButton.textContent = 'Dark Mode';
+        themeToggleButton.textContent = 'Dark';
         localStorage.setItem('theme', 'light');
     } else {
         document.body.classList.replace('light-mode', 'dark-mode');
-        themeToggleButton.textContent = 'Light Mode';
+        themeToggleButton.textContent = 'Light';
         localStorage.setItem('theme', 'dark');
     }
 });
@@ -178,7 +178,7 @@ document.getElementById('calculate').addEventListener('click', async () => {
         } else {
             // Si non trouvé, faire une requête pour valider et récupérer le nom officiel
             const response = await fetch(`https://api.coingecko.com/api/v3/coins/${token}`);
-            if (!response.ok) throw new Error('Token introuvable');
+            if (!response.ok) throw new Error(' Notez le nom complet avec un tiret si nécessaire. Ex: pour btc notez bitcoin, pour injective notez injective-protocol, pour Akash notez akash-network, pour RSR notez reserve-rights-token etc');
             const data = await response.json();
 
             // Ajouter le token au cache avec son nom officiel
@@ -188,7 +188,7 @@ document.getElementById('calculate').addEventListener('click', async () => {
 
         // Faire la requête pour obtenir les informations du token
         const response = await fetch(`https://api.coingecko.com/api/v3/coins/${token}`);
-        if (!response.ok) throw new Error('Token introuvable');
+        if (!response.ok) throw new Error(' Notez le nom complet avec un tiret si nécessaire. Ex: pour btc notez (bitcoin), pour injective notez (injective-protocol), pour Akash notez (akash-network), pour RSR notez (reserve-rights-token) etc');
 
         const data = await response.json();
         const currentPrice = data.market_data.current_price.usd;
