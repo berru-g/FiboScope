@@ -277,7 +277,7 @@ a:hover {
     background-color: #ddd;
 }
 
-img {
+#pub {
     display: block;
     margin: 0 auto;
     max-width: 90%;
