@@ -280,14 +280,28 @@ a:hover {
 #pub {
     display: block;
     margin: 0 auto;
-    max-width: 100%;
+    max-width: 550px;
     height: auto;
     transform: translateY(-5px);
     box-shadow: 0 2px 8px var(--shadow-color);
-    border: 1px solid var(--border-color);
     margin-top: 0px;
     border-radius: 8px;
 
+}
+.no-border-popup {
+    background: black;
+    box-shadow: none; /* Pas d'ombre */
+    padding: 0; /* Pas d'espacement */
+}
+
+.no-border-popup .swal2-close {
+    color:#ff4d4d ; /* Assure que la croix est bien visible */
+}
+
+#pub img {
+    width: 100%; /* Image responsive */
+    height: auto; /* Proportions conservées */
+    border-radius: 0; /* Pas d'arrondis */
 }
 
 img:hover {

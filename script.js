@@ -295,3 +295,18 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+//pub ledger
+setTimeout(() => {
+    Swal.fire({
+        html: '<a href="https://shop.ledger.com/pages/ledger-nano-s-plus/?r=97b532808e9b" target="_blank">' +
+              '<img id="pub" src="https://affiliate.ledger.com/image/300/250/French" alt="Ledger Nano S Plus">' +
+              '</a>',
+        showCloseButton: true, // Affiche le bouton de fermeture (croix)
+        showConfirmButton: false, // Supprime le bouton "OK"
+        customClass: {
+            popup: 'no-border-popup' // Applique la classe pour retirer les bordures
+        },
+        width: 'auto', // Ajuste la largeur automatiquement en fonction de l'image
+        padding: 0 // Supprime les marges internes
+    });
+}, 10000); 
