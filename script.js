@@ -295,7 +295,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
-//pub ledger
+/*
 setTimeout(() => {
     Swal.fire({
         html: '<a href="https://shop.ledger.com/pages/ledger-nano-s-plus/?r=97b532808e9b" target="_blank">' +
@@ -309,4 +309,4 @@ setTimeout(() => {
         width: 'auto', // Ajuste la largeur automatiquement en fonction de l'image
         padding: 0 // Supprime les marges internes
     });
-}, 10000); 
+}, 10000); */
