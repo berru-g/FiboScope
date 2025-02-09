@@ -79,7 +79,7 @@ fetch('https://api.coingecko.com/api/v3/simple/price?ids=solana,bittensor,inject
       container.appendChild(totalElement);
     }
 
-    totalElement.innerHTML = `<h3 id="total">${totalPortfolioValue.toFixed(2)} 💵</h3>`;
+    totalElement.innerHTML = `<h3 id="total">💵 ${totalPortfolioValue.toFixed(2)} 💵</h3>`;
 
   })
   .catch(error => {
@@ -92,8 +92,8 @@ const hamburgerMenu = document.querySelector('.hamburger-menu');
 hamburgerMenu.addEventListener('click', () => {
   // Utilisation de SweetAlert pour afficher la fenêtre contextuelle
   Swal.fire({
-    title: 'All my wallets',
-    html: '<ul><li><a href="https://shop.ledger.com/?r=">Ledger</a></li><li><a href="https://accounts.binance.com/register?ref=">Binance</a></li><li><a href="#">Phantom</a></li><li><a href="https://solscan.io/account/D6khWoqvc2zX46HVtSZcNrPumnPLPM72SnSuDhBrZeTC#portfolio">Solscan.io</a></li><li><a href="https://pump.fun/profile/D6khWo">Pump.fun</a></li><li><a href="https://jup.ag">jup.ag</a></li></ul>',
+    title: '0x3u$t1s',
+    html: '<ul><li><a href="https://accounts.binance.com/register?ref=">Binance</a>.com</li><li><a href="https://shop.ledger.com/?r=">Ledger</a>/live</li><li><a href="#">Phantom</a>/app</li><li><a href="https://solscan.io/account/D6khWoqvc2zX46HVtSZcNrPumnPLPM72SnSuDhBrZeTC#portfolio">Solscan</a>.io</li><li><a href="https://pump.fun/profile/D6khWo">Pump</a>.fun</li><li><a href="https://jup.ag">jup</a>.ag</li></ul>',
     showCloseButton: true,
     showConfirmButton: false,
     customClass: {
