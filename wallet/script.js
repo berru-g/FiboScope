@@ -6,7 +6,7 @@ fetch('https://api.coingecko.com/api/v3/simple/price?ids=solana,bittensor,inject
 
     const tokenHoldings = {
       solana: 1.72,
-      bittensor: 1,
+      bittensor: 0,
       'injective-protocol': 6,
       'reserve-rights-token': 42007,
       near: 98,
@@ -14,7 +14,7 @@ fetch('https://api.coingecko.com/api/v3/simple/price?ids=solana,bittensor,inject
       ethereum: 0.0001,
       //'apu-s-club':1000000,
       optimism: 0.18,
-      'render-token': 32.61,
+      'render-token': 33,
     };
 
 
