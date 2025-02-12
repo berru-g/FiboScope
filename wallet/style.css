@@ -281,3 +281,15 @@ a:hover {
 svg {
   width: 15px;
 }
+#footer {
+  margin: 20px 20px;
+  display: block;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100%;
+  padding: 20px;
+  background-color: #444;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}

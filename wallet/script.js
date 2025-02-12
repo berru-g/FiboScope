@@ -1,20 +1,15 @@
-fetch('https://api.coingecko.com/api/v3/simple/price?ids=solana,bittensor,injective-protocol,reserve-rights-token,near,mysterium,ethereum,optimism,apu-s-club,render-token&vs_currencies=usd&include_24hr_change=true')
+fetch('https://api.coingecko.com/api/v3/simple/price?ids=solana,reserve-rights-token,near,mysterium,render-token&vs_currencies=usd&include_24hr_change=true')
 
   .then(response => response.json())
   .then(data => {
     const container = document.getElementById('crypto-prices');
 
     const tokenHoldings = {
-      solana: 1.72,
-      bittensor: 0,
-      'injective-protocol': 6,
-      'reserve-rights-token': 42007,
-      near: 98,
-      mysterium: 5,
-      ethereum: 0.0001,
-      //'apu-s-club':1000000,
-      optimism: 0.18,
-      'render-token': 33,
+      solana: 2.41,
+      'reserve-rights-token': 42008,
+      near: 98.78,
+      mysterium: 4,
+      'render-token': 44.96,
     };
 
 
