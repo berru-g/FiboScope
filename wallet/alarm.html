@@ -41,12 +41,22 @@
       color: grey;
       text-decoration: none;
     }
+    footer{
+      margin: 20px 20px;
+      display: block;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 100%;
+      padding: 20px;
+      
+    }
   </style>
 </head>
 
 <body>
   <h1>CryptoAlarm</h1>
-  <p><a href="https://github.com/berru-g/FiboScope/tree/main/wallet">code src</a></p>
+  
   <form id="priceForm">
     <label for="token">🪙</label>
     <input type="text" id="token" name="token" placeholder="Exemple : solana" required>
@@ -62,9 +72,12 @@
 
   <div id="solanaPriceDisplay" style="margin-top: 20px; font-size: 1.5em;">Prix du token : $0.00</div>
   <br>
-  <p><strong><a href="../index.html">↩️ FiboScope</a></strong></p>
-  <br>
-  <p><strong><a href="index.html">↩️ Wallet</a></strong></p>
+  <footer>
+    <p>code source <a href="https://github.com/berru-g/FiboScope/tree/main/wallet">github</a></p>
+    <p>fibonacci tool <strong><a href="../index.html">FiboScope</a></strong></p>
+
+    <p>all in one <strong><a href="index.html">Wallet</a></strong></p>
+  </footer>
   <!-- Sons d'alarme -->
   <audio id="alarmSoundUpper"
     src="https://github.com/berru-g/Rick-MortySample/raw/master/PadMusical-master/public/rsc-mp3/Rick-sample/ricky_ticky_tabby_biatch.wav"
@@ -118,13 +131,13 @@
             console.log('Le prix est descendu en dessous de la limite inférieure, déclenchement de l\'alarme descendante');
             playLowerAlarm();
             solanaPriceDisplay.textContent = `👇 ${tokenSymbol} : $${tokenPrice.toFixed(2)}`;
-            document.body.style.backgroundColor = 'white';
+            document.body.style.backgroundColor = '#ab9ff2';
             document.body.style.color = 'black';
           } else if (tokenPrice > targetUpperPrice) {
             console.log('Le prix a dépassé la limite supérieure, déclenchement de l\'alarme ascendante');
             playUpperAlarm();
             solanaPriceDisplay.textContent = `👆 ${tokenSymbol} : $${tokenPrice.toFixed(2)}`;
-            document.body.style.backgroundColor = 'lightgreen';
+            document.body.style.backgroundColor = '#0ebeff';
             document.body.style.color = 'black';
           } else {
             console.log('Le prix est dans la plage spécifiée');
