@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<!-- 
+    ============================================
+       Developed by : https://github.com/berru-g/
+       Project : FiboScope is the simple fibonacci retracement tool
+       Date : 20/01/2025
+       Version : 1.0
+       Mise à jour article : Weekly
+       Licence : The MIT License (MIT)
+       Copyright (c) 2025 Berru
+       Contact : https://savoir-relatif-et-absolu.netlify.app/#espace-commentaire
+    ============================================
+-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alarm-Crypto</title>
+    <link rel="shortcut icon" href="https://img.icons8.com/?size=100&id=bsZ8zwOxyUKF&format=png&color=000000" />
+    <link rel="apple-touch-icon" href="https://img.icons8.com/?size=100&id=bsZ8zwOxyUKF&format=png&color=000000" />
+    <meta name="description" content="Alarm crypto.">
+    <meta name="keywords" content="Gaël berru, Alarm crypto, outil analyse token">
+    <meta name="author" content="Gael Berru.">
+    <meta name="robots" content="noai">
+    <!-- Balises Open Graph pour les réseaux sociaux -->
+    <meta property="og:title" content="Crypto Alarm">
+    <meta property="og:description" content="Alarm crypto, outil analyse token">
+    <meta property="og:type" content="tool">
+    <meta property="og:url" content="https://fiboscope.netlify.app">
+    <link rel="canonical" href="https://fiboscope.netlify.app/" />
+    <!--
+    <link rel="alternate" hreflang="fr" href="https://fiboscope.netlify.app/fr/" />
+    <link rel="alternate" hreflang="en" href="https://fiboscope.netlify.app/en/" />
+-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": "Outil d'Analyse Crypto",
+          "description": "Un outil innovant pour évaluer le potentiel de performance des crypto-monnaies.",
+          "brand": {
+            "@type": "Brand",
+            "name": "FiboScope"
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "120"
+          }
+        }
+        </script>
+
+    <!-- Google tag (gtag.js) -->
+</head>
+
+<body>
+    <script src="https://widgets.coingecko.com/gecko-coin-price-marquee-widget.js"></script>
+    <gecko-coin-price-marquee-widget locale="en" dark-mode="true" outlined="true" coin-ids=""
+        initial-currency="usd"></gecko-coin-price-marquee-widget>
+    <br>
+    <h1>Alarm Crypto</h1>
+    <button id="themeToggle" class="theme-toggle">Light</button>
+    <section>
+        <form id="priceForm">
+            <label for="token">🪙</label>
+            <input type="text" id="token" name="token" placeholder="Exemple : solana" required>
+            <br>
+            <label for="targetLowerPrice">📉</label>
+            <input type="number" id="targetLowerPrice" name="targetLowerPrice" placeholder="Exemple : 192" required>
+            <br>
+            <label for="targetUpperPrice">📈</label>
+            <input type="number" id="targetUpperPrice" name="targetUpperPrice" placeholder="Exemple : 200" required>
+            <br>
+            <button type="submit">Let's go</button>
+        </form>
+
+        <div id="solanaPriceDisplay" style="margin-top: 20px; font-size: 1.5em;">$0.00</div>
+        <br>
+    </section>
+    <br>
+    <div class="share-container">
+        <!-- Bouton principal avec icône "share" -->
+        <button id="shareButton">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 24 24">
+                <path
+                    d="M 20 0 C 17.789063 0 16 1.789063 16 4 C 16 4.277344 16.039063 4.550781 16.09375 4.8125 L 7 9.375 C 6.265625 8.535156 5.203125 8 4 8 C 1.789063 8 0 9.789063 0 12 C 0 14.210938 1.789063 16 4 16 C 5.203125 16 6.265625 15.464844 7 14.625 L 16.09375 19.1875 C 16.039063 19.449219 16 19.722656 16 20 C 16 22.210938 17.789063 24 20 24 C 22.210938 24 24 22.210938 24 20 C 24 17.789063 22.210938 16 20 16 C 18.796875 16 17.734375 16.535156 17 17.375 L 7.90625 12.8125 C 7.960938 12.550781 8 12.277344 8 12 C 8 11.722656 7.960938 11.449219 7.90625 11.1875 L 17 6.625 C 17.734375 7.464844 18.796875 8 20 8 C 22.210938 8 24 6.210938 24 4 C 24 1.789063 22.210938 0 20 0 Z">
+                </path>
+            </svg>
+        </button>
+        <!-- Popup avec les options -->
+        <div id="sharePopup" class="share-popup">
+            <button onclick="copyToClipboard()"><i class='fas fa-copy'></i></button>
+            <a href="#" id="twitterShare" target="_blank"><i class='fa-brands fa-twitter'></i></a>
+            <a href="#" id="whatsappShare" target="_blank"><i class='fa-brands fa-whatsapp'></i></a>
+            <a href="#" id="facebookShare" target="_blank"><i class='fa-brands fa-facebook-f'></i></a>
+        </div>
+    </div>
+    <br>
+    <a href="https://shop.ledger.com/pages/ledger-nano-s-plus/?r=97b532808e9b"><img id="pub" width=850 height=420
+            src="https://affiliate.ledger.com/image/850/420/French"></a>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section links">
+                <h3>Other tool</h3>
+                <ul>
+                    <li><a href="../index.html">FiboScope</a></li>
+                    <li><a href="../wallet/index.html">Wallet</a></li>
+                    <li><a href="https://github.com/berru-g/FiboScope/tree/main/wallet">github</a></li>
+
+                </ul>
+            </div>
+            <div class="footer-section links">
+                <h3>Libre acces</h3>
+                <ul>
+                    <li><a href="https://savoir-relatif-et-absolu.netlify.app/#espace-commentaire">Contact</a></li>
+                    <li><a href="https://savoir-relatif-et-absolu.netlify.app/license">Licence</a></li>
+                    <li><a href="https://berru-g.github.io/berru-g/blog/donation.html">donnation</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </footer>
+    <!-- Sons d'alarme -->
+    <audio id="alarmSoundUpper"
+        src="https://github.com/berru-g/Rick-MortySample/raw/master/PadMusical-master/public/rsc-mp3/Rick-sample/ricky_ticky_tabby_biatch.wav"
+        preload="auto"></audio>
+    <audio id="alarmSoundLower"
+        src="https://github.com/berru-g/Rick-MortySample/raw/master/PadMusical-master/public/rsc-mp3/Rick-sample/Awww_Bitch.wav"
+        preload="auto"></audio>
+    <script src="../script.js"></script>
+    <script>
+        const alarmSoundUpper = document.getElementById('alarmSoundUpper');
+        const alarmSoundLower = document.getElementById('alarmSoundLower');
+        const solanaPriceDisplay = document.getElementById('solanaPriceDisplay');
+
+        let tokenSymbol = ''; // Le token saisi par l'utilisateur
+        let targetLowerPrice = 0; // Prix bas saisi par l'utilisateur
+        let targetUpperPrice = 0; // Prix haut saisi par l'utilisateur
+
+        // Écoute l'événement de soumission du formulaire
+        document.getElementById('priceForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Empêche le rechargement de la page
+
+            // Récupère les valeurs saisies par l'utilisateur
+            tokenSymbol = document.getElementById('token').value.toLowerCase();
+            targetLowerPrice = parseFloat(document.getElementById('targetLowerPrice').value);
+            targetUpperPrice = parseFloat(document.getElementById('targetUpperPrice').value);
+
+            // Démarre la surveillance du prix
+            checkSolanaPrice();
+            setInterval(checkSolanaPrice, 10000); // Vérifie le prix toutes les 10 secondes
+        });
+
+        function checkSolanaPrice() {
+            if (!tokenSymbol || !targetLowerPrice || !targetUpperPrice) {
+                console.error('Veuillez saisir un token et des prix valides.');
+                return;
+            }
+
+            fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${tokenSymbol}&vs_currencies=usd`)
+                .then(response => response.json())
+                .then(data => {
+                    const tokenPrice = data[tokenSymbol]?.usd;
+                    if (tokenPrice === undefined) {
+                        console.error(`Token "${tokenSymbol}" non trouvé.`);
+                        solanaPriceDisplay.textContent = `Token "${tokenSymbol}" non trouvé.`;
+                        return;
+                    }
+
+                    solanaPriceDisplay.textContent = `${tokenSymbol} : $${tokenPrice.toFixed(8)}`;
+
+                    if (tokenPrice < targetLowerPrice) {
+                        console.log('Le prix est descendu en dessous de la limite inférieure, déclenchement de l\'alarme descendante');
+                        playLowerAlarm();
+                        solanaPriceDisplay.textContent = `👇 ${tokenSymbol} : $${tokenPrice.toFixed(2)}`;
+                        document.body.style.backgroundColor = '#ab9ff2';
+                        document.body.style.color = 'black';
+                    } else if (tokenPrice > targetUpperPrice) {
+                        console.log('Le prix a dépassé la limite supérieure, déclenchement de l\'alarme ascendante');
+                        playUpperAlarm();
+                        solanaPriceDisplay.textContent = `👆 ${tokenSymbol} : $${tokenPrice.toFixed(2)}`;
+                        document.body.style.backgroundColor = '#0ebeff';
+                        document.body.style.color = 'black';
+                    } else {
+                        console.log('Le prix est dans la plage spécifiée');
+                        document.body.style.backgroundColor = '#1a1a1a';
+                        document.body.style.color = 'white';
+                    }
+                })
+                .catch(error => {
+                    console.error('Erreur lors de la récupération du prix :', error);
+                });
+        }
+
+        function playUpperAlarm() {
+            alarmSoundUpper.play();
+        }
+
+        function playLowerAlarm() {
+            alarmSoundLower.play();
+        }
+    </script>
+</body>
+
+<h5>FiboScope &copy; 2025 | tool by <a href="https://github.com/berru-g/FiboScope/blob/main/license.txt">berru-g</a>
+</h5>
+<script>
+
+</script>
+</body>
+
+</html>
