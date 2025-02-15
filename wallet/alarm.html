@@ -43,19 +43,55 @@
     }
 
     footer {
-      margin: 20px 20px;
-      display: block;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: center;
-      max-width: 100%;
-      padding: 20px;
+      width: 100%;
+      height: auto;
+      background: transparent;
+      color: grey;
+      padding: 2rem 1rem;
+      text-align: center;
+      box-shadow: 0px -4px 0px -2px #a7a6a6;
+      
+    }
 
+    .footer-content {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+
+    .footer-section {
+      margin: 1rem;
+    }
+
+    .footer-section h3 {
+      margin-bottom: 1rem;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-section ul li a {
+      color: #ab9ff2;
+      text-decoration: none;
+    }
+
+    .footer-section ul li a:hover {
+      color: grey;
     }
   </style>
 </head>
 
 <body>
+  <script src="https://widgets.coingecko.com/gecko-coin-price-marquee-widget.js"></script>
+  <gecko-coin-price-marquee-widget locale="en" dark-mode="true" outlined="true" coin-ids=""
+    initial-currency="usd"></gecko-coin-price-marquee-widget>
+  <br>
   <h1>CryptoAlarm</h1>
 
   <form id="priceForm">
@@ -73,15 +109,28 @@
 
   <div id="solanaPriceDisplay" style="margin-top: 20px; font-size: 1.5em;">$0.00</div>
   <br>
-  <script src="https://widgets.coingecko.com/gecko-coin-price-marquee-widget.js"></script>
-  <gecko-coin-price-marquee-widget locale="en" dark-mode="true" outlined="true" coin-ids=""
-    initial-currency="usd"></gecko-coin-price-marquee-widget>
-  <br>
-  <footer>
-    <p>code source <a href="https://github.com/berru-g/FiboScope/tree/main/wallet">github</a></p>
-    <p>fibonacci tool <strong><a href="../index.html">FiboScope</a></strong></p>
 
-    <p>all in one <strong><a href="index.html">Wallet</a></strong></p>
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section links">
+        <h3>Other tool</h3>
+        <ul>
+          <li><a href="../index.html">FiboScope</a></li>
+          <li><a href="index.html">Wallet</a></li>
+          <li><a href="https://github.com/berru-g/FiboScope/tree/main/wallet">github</a></li>
+
+        </ul>
+      </div>
+      <div class="footer-section links">
+        <h3>Libre acces</h3>
+        <ul>
+          <li><a href="https://savoir-relatif-et-absolu.netlify.app/#espace-commentaire">Contact</a></li>
+          <li><a href="https://savoir-relatif-et-absolu.netlify.app/license">Licence</a></li>
+          <li><a href="https://berru-g.github.io/berru-g/blog/donation.html">donnation</a></li>
+        </ul>
+      </div>
+    </div>
+
   </footer>
   <!-- Sons d'alarme -->
   <audio id="alarmSoundUpper"
