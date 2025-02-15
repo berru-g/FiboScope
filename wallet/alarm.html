@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CryptoAlarm</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1a1a1a;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    input,
+    button {
+      padding: 10px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #ab9ff2;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0ebeff;
+    }
+    a:hover {
+      color: #ab9ff2;
+      text-decoration: none;
+    }
+    a:hover {
+      color: grey;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>CryptoAlarm</h1>
+  <form id="priceForm">
+    <label for="token">🪙</label>
+    <input type="text" id="token" name="token" placeholder="Exemple : solana" required>
+    <br>
+    <label for="targetLowerPrice">📉</label>
+    <input type="number" id="targetLowerPrice" name="targetLowerPrice" placeholder="Exemple : 192" required>
+    <br>
+    <label for="targetUpperPrice">📈</label>
+    <input type="number" id="targetUpperPrice" name="targetUpperPrice" placeholder="Exemple : 200" required>
+    <br>
+    <button type="submit">Let's go</button>
+  </form>
+
+  <div id="solanaPriceDisplay" style="margin-top: 20px; font-size: 1.5em;">Prix du token : $0.00</div>
+
+  <p><a href="../index.html">↩️ FiboScope</a></p>
+
+  <!-- Sons d'alarme -->
+  <audio id="alarmSoundUpper"
+    src="https://github.com/berru-g/Rick-MortySample/raw/master/PadMusical-master/public/rsc-mp3/Rick-sample/ricky_ticky_tabby_biatch.wav"
+    preload="auto"></audio>
+  <audio id="alarmSoundLower"
+    src="https://github.com/berru-g/Rick-MortySample/raw/master/PadMusical-master/public/rsc-mp3/Rick-sample/Awww_Bitch.wav"
+    preload="auto"></audio>
+
+  <script>
+    const alarmSoundUpper = document.getElementById('alarmSoundUpper');
+    const alarmSoundLower = document.getElementById('alarmSoundLower');
+    const solanaPriceDisplay = document.getElementById('solanaPriceDisplay');
+
+    let tokenSymbol = ''; // Le token saisi par l'utilisateur
+    let targetLowerPrice = 0; // Prix bas saisi par l'utilisateur
+    let targetUpperPrice = 0; // Prix haut saisi par l'utilisateur
+
+    // Écoute l'événement de soumission du formulaire
+    document.getElementById('priceForm').addEventListener('submit', function (event) {
+      event.preventDefault(); // Empêche le rechargement de la page
+
+      // Récupère les valeurs saisies par l'utilisateur
+      tokenSymbol = document.getElementById('token').value.toLowerCase();
+      targetLowerPrice = parseFloat(document.getElementById('targetLowerPrice').value);
+      targetUpperPrice = parseFloat(document.getElementById('targetUpperPrice').value);
+
+      // Démarre la surveillance du prix
+      checkSolanaPrice();
+      setInterval(checkSolanaPrice, 10000); // Vérifie le prix toutes les 10 secondes
+    });
+
+    function checkSolanaPrice() {
+      if (!tokenSymbol || !targetLowerPrice || !targetUpperPrice) {
+        console.error('Veuillez saisir un token et des prix valides.');
+        return;
+      }
+
+      fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${tokenSymbol}&vs_currencies=usd`)
+        .then(response => response.json())
+        .then(data => {
+          const tokenPrice = data[tokenSymbol]?.usd;
+          if (tokenPrice === undefined) {
+            console.error(`Token "${tokenSymbol}" non trouvé.`);
+            solanaPriceDisplay.textContent = `Token "${tokenSymbol}" non trouvé.`;
+            return;
+          }
+
+          solanaPriceDisplay.textContent = `${tokenSymbol} : $${tokenPrice.toFixed(8)}`;
+
+          if (tokenPrice < targetLowerPrice) {
+            console.log('Le prix est descendu en dessous de la limite inférieure, déclenchement de l\'alarme descendante');
+            playLowerAlarm();
+            solanaPriceDisplay.textContent = `👇 ${tokenSymbol} : $${tokenPrice.toFixed(2)}`;
+            document.body.style.backgroundColor = 'white';
+            document.body.style.color = 'black';
+          } else if (tokenPrice > targetUpperPrice) {
+            console.log('Le prix a dépassé la limite supérieure, déclenchement de l\'alarme ascendante');
+            playUpperAlarm();
+            solanaPriceDisplay.textContent = `👆 ${tokenSymbol} : $${tokenPrice.toFixed(2)}`;
+            document.body.style.backgroundColor = 'lightgreen';
+            document.body.style.color = 'black';
+          } else {
+            console.log('Le prix est dans la plage spécifiée');
+            document.body.style.backgroundColor = '#1a1a1a';
+            document.body.style.color = 'white';
+          }
+        })
+        .catch(error => {
+          console.error('Erreur lors de la récupération du prix :', error);
+        });
+    }
+
+    function playUpperAlarm() {
+      alarmSoundUpper.play();
+    }
+
+    function playLowerAlarm() {
+      alarmSoundLower.play();
+    }
+  </script>
+</body>
+
+</html>
