@@ -41,7 +41,8 @@
       color: grey;
       text-decoration: none;
     }
-    footer{
+
+    footer {
       margin: 20px 20px;
       display: block;
       flex-direction: row;
@@ -49,14 +50,14 @@
       justify-content: center;
       max-width: 100%;
       padding: 20px;
-      
+
     }
   </style>
 </head>
 
 <body>
   <h1>CryptoAlarm</h1>
-  
+
   <form id="priceForm">
     <label for="token">🪙</label>
     <input type="text" id="token" name="token" placeholder="Exemple : solana" required>
@@ -70,7 +71,11 @@
     <button type="submit">Let's go</button>
   </form>
 
-  <div id="solanaPriceDisplay" style="margin-top: 20px; font-size: 1.5em;">Prix du token : $0.00</div>
+  <div id="solanaPriceDisplay" style="margin-top: 20px; font-size: 1.5em;">$0.00</div>
+  <br>
+  <script src="https://widgets.coingecko.com/gecko-coin-price-marquee-widget.js"></script>
+  <gecko-coin-price-marquee-widget locale="en" dark-mode="true" outlined="true" coin-ids=""
+    initial-currency="usd"></gecko-coin-price-marquee-widget>
   <br>
   <footer>
     <p>code source <a href="https://github.com/berru-g/FiboScope/tree/main/wallet">github</a></p>
