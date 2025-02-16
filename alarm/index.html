@@ -8,7 +8,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #1a1a1a;
+      background-color: #333;
       color: white;
       text-align: center;
       padding: 20px;
@@ -49,8 +49,8 @@
       color: grey;
       padding: 2rem 1rem;
       text-align: center;
-      box-shadow: 0px -4px 0px -2px #a7a6a6;
-      
+      box-shadow: 0px -2px 0px -2px #a7a6a6;
+
     }
 
     .footer-content {
@@ -88,9 +88,9 @@
 </head>
 
 <body>
-  <script src="https://widgets.coingecko.com/gecko-coin-price-marquee-widget.js"></script>
-  <gecko-coin-price-marquee-widget locale="en" dark-mode="true" outlined="true" coin-ids=""
-    initial-currency="usd"></gecko-coin-price-marquee-widget>
+  <script defer src="https://www.livecoinwatch.com/static/lcw-widget.js"></script>
+  <div class="livecoinwatch-widget-5" lcw-base="USDC" lcw-color-tx="#999999" lcw-marquee-1="coins"
+    lcw-marquee-2="movers" lcw-marquee-items="10"></div>
   <br>
   <h1>CryptoAlarm</h1>
 
@@ -116,8 +116,8 @@
         <h3>Other tool</h3>
         <ul>
           <li><a href="../index.html">FiboScope</a></li>
-          <li><a href="index.html">Wallet</a></li>
-          <li><a href="https://github.com/berru-g/FiboScope/tree/main/wallet">github</a></li>
+          <li><a href="../wallet/index.html">Wallet</a></li>
+          <li><a href="https://github.com/berru-g/FiboScope">github</a></li>
 
         </ul>
       </div>
@@ -195,7 +195,7 @@
             document.body.style.color = 'black';
           } else {
             console.log('Le prix est dans la plage spécifiée');
-            document.body.style.backgroundColor = '#1a1a1a';
+            document.body.style.backgroundColor = '#333';
             document.body.style.color = 'white';
           }
         })
@@ -213,5 +213,6 @@
     }
   </script>
 </body>
-
+<h5>Crypto tool &copy; 2025 | by <a href="https://github.com/berru-g/FiboScope/blob/main/license.txt">berru-g</a>
+</h5>
 </html>
