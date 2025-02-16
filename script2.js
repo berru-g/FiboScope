@@ -382,3 +382,23 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+/* international mode language
+const userLanguage = navigator.language.split('-')[0]; // Détecte la langue (ex: "fr", "en")
+const translations = await fetch(`/translations/${userLanguage}.json`).then(res => res.json());
+
+// Appliquer les traductions
+document.getElementById('title').textContent = translations.title;
+document.getElementById('description').textContent = translations.description;
+document.getElementById('search').placeholder = translations.search_placeholder;
+/*
+document.getElementById('language-selector').addEventListener('change', async (e) => {
+  const language = e.target.value;
+  const translations = await fetch(`/translations/${language}.json`).then(res => res.json());
+
+  // Appliquer les traductions
+  document.getElementById('title').textContent = translations.title;
+  document.getElementById('description').textContent = translations.description;
+  document.getElementById('search').placeholder = translations.search_placeholder;
+});
+*/
