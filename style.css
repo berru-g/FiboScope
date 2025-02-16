@@ -40,6 +40,7 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
+    overflow-x: hidden; /* Empêche le défilement horizontal */
 }
 
 h1 {
@@ -84,7 +85,7 @@ section {
     padding: 10px;
   }
 #chart-container {
-    width: 550px;
+    max-width: 400px;
     border-radius: 8px;
     overflow: hidden;
     background-color: transparent;

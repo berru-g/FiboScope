@@ -314,7 +314,7 @@ ${data.market_data && data.market_data.market_cap.usd
 
         Plotly.newPlot('chart', [trace], layout).then(() => {
             Plotly.relayout('chart', {
-                width: 550, // Largeur personnalisée
+                width: 450, // Largeur personnalisée
                 height: 400, // Hauteur personnalisée
             });
         });
@@ -333,17 +333,17 @@ ${data.market_data && data.market_data.market_cap.usd
 function toggleSection() {
     const section = document.getElementById('dyor');
     const arrow = document.querySelector('#dyor .arrow');
-  
+
     if (section.style.height === '10px' || !section.style.height) {
-      // Ouvrir la section
-      section.style.height = `${section.scrollHeight}px`; // Hauteur totale du contenu
-      arrow.textContent = 'ℹ️'; // Changer la flèche vers le haut
+        // Ouvrir la section
+        section.style.height = `${section.scrollHeight}px`; // Hauteur totale du contenu
+        arrow.textContent = 'ℹ️'; // Changer la flèche vers le haut
     } else {
-      // Fermer la section
-      section.style.height = '150px'; // Revenir à la hauteur initiale
-      arrow.textContent = 'ℹ️ Disclaimer:'; // Changer la flèche vers le bas
+        // Fermer la section
+        section.style.height = '150px'; // Revenir à la hauteur initiale
+        arrow.textContent = 'ℹ️ Disclaimer:'; // Changer la flèche vers le bas
     }
-  }
+}
 // Gestion du bouton de partage
 document.addEventListener("DOMContentLoaded", () => {
     const shareButton = document.getElementById("shareButton");
