@@ -60,6 +60,40 @@ section {
     border: 1px solid var(--border-color);
     margin-top: 20px;
 }
+/* Style de base pour la section */
+section {
+    overflow: hidden; /* Cache le contenu qui dépasse */
+    transition: height 0.3s ease; /* Animation fluide */
+  }
+  
+  /* Style spécifique pour la section DYOR */
+  #dyor {
+    height: 150px; /* Hauteur initiale */
+  }
+  
+  /* Style pour la flèche */
+  .arrow {
+    text-align: center; /* Centrer la flèche */
+    font-size: 18px;
+    cursor: pointer; /* Curseur en forme de main */
+    margin-top: 0px;
+  }
+  
+  /* Style pour le contenu */
+  .deroule {
+    padding: 10px;
+  }
+#chart-container {
+    width: 550px;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: transparent;
+}
+#chart {
+    background-color: transparent !important; /* Fond transparent */
+    border-radius: 8px; /* Border-radius */
+    overflow: hidden; /* Pour que le border-radius s'applique correctement */
+}
 
 input {
     width: 300px;
@@ -280,7 +314,7 @@ a:hover {
 #pub {
     display: block;
     margin: 0 auto;
-    width:100%;
+    width: 100%;
     max-width: 550px;
     height: auto;
     transform: translateY(-5px);
@@ -335,6 +369,7 @@ img:hover {
 .info-container:hover .info-tooltip {
     visibility: visible;
 }
+
 footer {
     width: 90%;
     height: auto;
@@ -343,37 +378,37 @@ footer {
     padding: 2rem 1rem;
     text-align: center;
     box-shadow: 0px -2px 0px -2px #1a1a1a;
-    
-  }
 
-  .footer-content {
+}
+
+.footer-content {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-  }
+}
 
-  .footer-section {
+.footer-section {
     margin: 1rem;
-  }
+}
 
-  .footer-section h3 {
+.footer-section h3 {
     margin-bottom: 1rem;
-  }
+}
 
-  .footer-section ul {
+.footer-section ul {
     list-style: none;
     padding: 0;
-  }
+}
 
-  .footer-section ul li {
+.footer-section ul li {
     margin-bottom: 0.5rem;
-  }
+}
 
-  .footer-section ul li a {
+.footer-section ul li a {
     color: var(--primary-color);
     text-decoration: none;
-  }
+}
 
-  .footer-section ul li a:hover {
+.footer-section ul li a:hover {
     color: grey;
-  }
+}

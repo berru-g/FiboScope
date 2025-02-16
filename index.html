@@ -36,6 +36,7 @@
     <link rel="alternate" hreflang="fr" href="https://fiboscope.netlify.app/fr/" />
     <link rel="alternate" hreflang="en" href="https://fiboscope.netlify.app/en/" />
 -->
+    <script src="https://cdn.plot.ly/plotly-2.24.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -141,7 +142,17 @@
     <input type="text" id="token" placeholder="Nom du token (ex: bitcoin, render-token)">
     <button id="calculate">Calculer</button>
     <div id="result"></div>
-    <div id="spinner" class="spinner" style="display: none;"></div>
+    <br>
+
+    <div id="chart-container" style="width: 550px; border-radius: 8px; overflow: hidden;">
+        <div id="chart"></div>
+        <p style="text-align:center;"><a href="https://www.coingecko.com/fr/coins/${data.id}"
+            target="_blank">Voir la chart sur CoinGecko.com</a></p>
+        <script defer src="https://www.livecoinwatch.com/static/lcw-widget.js"></script>
+        <div class="livecoinwatch-widget-5" lcw-base="USDC" lcw-color-tx="#999999" lcw-marquee-1="coins"
+            lcw-marquee-2="movers" lcw-marquee-items="10"></div>
+        
+    </div>
 
     <br>
     <div class="share-container">
@@ -162,54 +173,64 @@
         </div>
     </div>
     <br>
-    <script defer src="https://www.livecoinwatch.com/static/lcw-widget.js"></script>
-    <div class="livecoinwatch-widget-5" lcw-base="USDC" lcw-color-tx="#999999" lcw-marquee-1="coins"
-        lcw-marquee-2="movers" lcw-marquee-items="10"></div>
-    <section id="dyor">
-        <p><strong>ℹ️ Disclaimer:</strong></p>
-        <p>
-            Bien que FiboScope vous permette de mesurer le pourcentage actuel d'un token par rapport à son ATH (All-Time
-            High), il est important de noter que :
-        </p>
-        <ul>
-            <li><strong>Un prix bas par rapport à l'ATH n'est pas une garantie d'opportunité :</strong> Un token à 1 %
-                de son ATH peut indiquer qu'il a perdu sa traction ou que le projet est inactif, voire abandonné.</li>
-            <li><strong>Une capitalisation boursière faible peut être un signal d'alerte :</strong> Les tokens à faible
-                market cap sont souvent plus volatils et risqués, et certains peuvent être des scams. <a
-                    href="top-ten-scam.html">Exemple avec cette liste du top 100 des projets abandonné.</a>
-            </li>
-            <li><strong>N'effectuez pas d'achat basé uniquement sur cet outil :</strong> Faites vos propres recherches
-                (DYOR).</li>
-        </ul>
-        <p>
-            <em>Fiboscope</em> ne peut être tenue responsable de pertes financières liées à vos décisions.
-            Investir dans les cryptomonnaies comporte des risques : ne misez que ce que vous êtes prêt à perdre.
-        </p>
 
-        <p>🚨 Cet outil est conçu par mes soins et basé sur la théorie que l'outil pro
-            "Fibonacci
-            retracement", à l'origine conçu pour repérer les zones de cassure de tendance, peut également servir à
-            mesurer le potentiel de performance d'un token.</p>
-        <p>De plus : les données présentées ( API de <a href="https://www.coingecko.com" target="_blank"
-                rel="noopener">CoinGecko.com</a> ) sont basées sur les informations historiques et ne
-            garantissent pas les performances futures des crypto-monnaies. Utilisez cet outil comme un support
-            supplémentaire, et non comme une source unique de
-            décision. Merci.
-        <ul>
-            <li>⏰ Essayer l'outil <a href="./alarm/index.html" target="_blank" rel="noopener">Crypto Alarm</a>.</li>
-            <li>✅ Si vous souhaitez une <a href="https://medium.com/@gael-berru/fibonacci-retracement-a56d53d5863d"
-                    target="_blank" rel="noopener">explication sur cette outil</a>.</li>
-            <li>✅ Si vous êtes débutant, <a
-                    href="https://savoir-relatif-et-absolu.netlify.app/comment-choisir-un-bon-token">comment choisir un
-                    bon
-                    token
-                    ?</a></li>
-            <li>🪙 Si cet outil vous est utile est que <a href="https://berru-g.github.io/berru-g/blog/donation.html"
-                    target="_blank" rel="noopener">vous
-                    souhaitez faire un don</a> 😉</li>
-            <li>⚙️ ou <a href="https://savoir-relatif-et-absolu.netlify.app/index.html/#espace-commentaire">une remarque
-                    pour une amélioration</a> du tool.</li>
-        </ul>
+    <section id="dyor">
+        <div class="deroule">
+            <div class="arrow" onclick="toggleSection()">ℹ️ Disclaimer:</div>
+            <p><strong></strong></p>
+            <p>
+                Bien que FiboScope vous permette de mesurer le pourcentage actuel d'un token par rapport à son ATH
+                (All-Time
+                High), il est important de noter que :
+            </p>
+            <ul>
+                <li><strong>Un prix bas par rapport à l'ATH n'est pas une garantie d'opportunité :</strong> Un token à
+                    1 %
+                    de son ATH peut indiquer qu'il a perdu sa traction ou que le projet est inactif, voire abandonné.
+                </li>
+                <li><strong>Une capitalisation boursière faible peut être un signal d'alerte :</strong> Les tokens à
+                    faible
+                    market cap sont souvent plus volatils et risqués, et certains peuvent être des scams. <a
+                        href="top-ten-scam.html">Exemple avec cette liste du top 100 des projets abandonné.</a>
+                </li>
+                <li><strong>N'effectuez pas d'achat basé uniquement sur cet outil :</strong> Faites vos propres
+                    recherches
+                    (DYOR).</li>
+            </ul>
+            <p>
+                <em>Fiboscope</em> ne peut être tenue responsable de pertes financières liées à vos décisions.
+                Investir dans les cryptomonnaies comporte des risques : ne misez que ce que vous êtes prêt à perdre.
+            </p>
+
+            <p>🚨 Cet outil est conçu par mes soins et basé sur la théorie que l'outil pro
+                "Fibonacci
+                retracement", à l'origine conçu pour repérer les zones de cassure de tendance, peut également servir à
+                mesurer le potentiel de performance d'un token.</p>
+            <p>De plus : les données présentées ( API de <a href="https://www.coingecko.com" target="_blank"
+                    rel="noopener">CoinGecko.com</a> ) sont basées sur les informations historiques et ne
+                garantissent pas les performances futures des crypto-monnaies. Utilisez cet outil comme un support
+                supplémentaire, et non comme une source unique de
+                décision. Merci.
+
+            <ul>
+                <li>⏰ Essayer l'outil <a href="./alarm/index.html" target="_blank" rel="noopener">Crypto Alarm</a>.</li>
+                <li>✅ Si vous souhaitez une <a href="https://medium.com/@gael-berru/fibonacci-retracement-a56d53d5863d"
+                        target="_blank" rel="noopener">explication sur cette outil</a>.</li>
+                <li>✅ Si vous êtes débutant, <a
+                        href="https://savoir-relatif-et-absolu.netlify.app/comment-choisir-un-bon-token">comment choisir
+                        un
+                        bon
+                        token
+                        ?</a></li>
+                <li>🪙 Si cet outil vous est utile est que <a
+                        href="https://berru-g.github.io/berru-g/blog/donation.html" target="_blank" rel="noopener">vous
+                        souhaitez faire un don</a> 😉</li>
+                <li>⚙️ ou <a href="https://savoir-relatif-et-absolu.netlify.app/index.html/#espace-commentaire">une
+                        remarque
+                        pour une amélioration</a> du tool.</li>
+            </ul>
+
+        </div>
     </section>
 
     <a href="https://shop.ledger.com/pages/ledger-nano-s-plus/?r=97b532808e9b"><img id="pub" width=850 height=420
@@ -241,7 +262,7 @@
     <br>
     <h5>FiboScope &copy; 2025 | tool by <a href="https://github.com/berru-g/FiboScope/blob/main/license.txt">berru-g</a>
     </h5>
-    <script src="script.js"></script>
+    <script src="script2.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Superposition de Graphiques Crypto</title>
+  <!-- Inclure Plotly.js -->
+  <script src="https://cdn.plot.ly/plotly-2.24.1.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    #search {
+      padding: 10px;
+      width: 300px;
+      font-size: 16px;
+    }
+    #superpose {
+      padding: 10px;
+      font-size: 16px;
+      margin-left: 10px;
+      display: none; /* Masquer le bouton au départ */
+    }
+    #chart {
+      margin-top: 20px;
+      width: 80%;
+      height: 400px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Superposition de Graphiques Crypto</h1>
+  <input type="text" id="search" placeholder="Rechercher un token (ex: bitcoin)">
+  <button id="superpose">Superposer</button>
+  <div id="chart"></div>
+
+  <script src="V1.js"></script>
+</body>
+</html>
