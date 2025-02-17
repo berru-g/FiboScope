@@ -260,7 +260,10 @@ ${data.market_data && data.market_data.market_cap.usd
                 : 'Non spécifié'}</p>
 
 <p><strong>Catégorie :</strong> ${data.categories ? data.categories.join(', ') : 'Non spécifiée'}</p>
+<p style="text-align:center;"><a href="https://www.coingecko.com/fr/coins/${data.id}"
+            target="_blank">Voir la chart sur CoinGecko.com</a></p>
 `;
+
 
         // **Ajout : Affichage de la chart avec personnalisation**
         const pricesResponse = await fetch(`https://api.coingecko.com/api/v3/coins/${token}/market_chart?vs_currency=usd&days=30`);
