@@ -258,8 +258,11 @@ ${data.market_data && data.market_data.market_cap.usd
 <p><strong>Écosystème : </strong>${data.platforms && Object.keys(data.platforms).length > 0
                 ? Object.keys(data.platforms).join(', ')
                 : 'Non spécifié'}</p>
+                
 
 <p><strong>Catégorie :</strong> ${data.categories ? data.categories.join(', ') : 'Non spécifiée'}</p>
+<div id="chart-container" style="border-radius: 8px; overflow: hidden;">
+        <div id="chart"></div>
 <p style="text-align:center;"><a href="https://www.coingecko.com/fr/coins/${data.id}"
             target="_blank">Voir la chart sur CoinGecko.com</a></p>
 `;

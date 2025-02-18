@@ -53,7 +53,8 @@ h1 {
 section {
     padding: 2rem;
     margin: 1rem auto;
-    max-width: 550px;
+    width: 100%;
+    max-width: 750px;
     border-radius: 8px;
     background-color: var(--input-background);
     transform: translateY(-5px);
@@ -85,10 +86,12 @@ section {
     padding: 10px;
   }
 #chart-container {
-    max-width: 400px;
+    width: 100%;
+    position: relative;
+    display: block;
     border-radius: 8px;
     overflow: hidden;
-    background-color: transparent;
+    background-color: transparent !important;
 }
 #chart {
     background-color: transparent !important; /* Fond transparent */
@@ -128,8 +131,8 @@ button:hover {
     border-radius: 8px;
     background-color: var(--background-color);
     border: 1px solid var(--border-color);
-    width: 70%;
-    max-width: 550px;
+    width: 100%;
+    max-width: 750px;
 }
 
 .result p {
