@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CryptoAlarm</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.all.min.js"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -12,6 +14,35 @@
       color: white;
       text-align: center;
       padding: 20px;
+    }
+    header {
+      margin-top: 20px;
+      margin-left: 20px;
+      color: grey;
+    }
+
+    .hamburger-menu {
+      width: 40px;
+      height: 20px;
+      top: 20px;
+      left: 20px;
+      position: fixed;
+      color: grey;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .hamburger-menu span {
+      width: 100%;
+      height: 2px;
+      background-color: grey;
+    }
+
+    span {
+      text-decoration: none;
+      color: grey;
     }
 
     input,
@@ -86,7 +117,12 @@
     }
   </style>
 </head>
+<header>
+  <div class="hamburger-menu">
+    <img src="https://img.icons8.com/?size=100&id=36389&format=png&color=808080">
+  </div>
 
+</header>
 <body>
   <script defer src="https://www.livecoinwatch.com/static/lcw-widget.js"></script>
   <div class="livecoinwatch-widget-5" lcw-base="USDC" lcw-color-tx="#999999" lcw-marquee-1="coins"
@@ -117,7 +153,7 @@
         <ul>
           <li><a href="../index.html">FiboScope</a></li>
           <li><a href="../wallet/index.html">Wallet</a></li>
-          <li><a href="https://github.com/berru-g/FiboScope">github</a></li>
+          <li><a href="../superpose/index.html">Multi chart</a></li>
 
         </ul>
       </div>
@@ -211,6 +247,23 @@
     function playLowerAlarm() {
       alarmSoundLower.play();
     }
+        // menu
+        const hamburgerMenu = document.querySelector('.hamburger-menu');
+
+        hamburgerMenu.addEventListener('click', () => {
+          // Utilisation de SweetAlert pour afficher la fenêtre contextuelle
+          Swal.fire({
+            title: 'free Tool',
+            html: '<ul><p><a href="../fiboscope/index.html">fiboscope</a> fibonacci tool</p><p><a href="../alarm/index.html">Alarm Crypto</a></p><p><a href="../wallet/index.html">Wallet</a></p><p><a href="../superpose/index.html">Multi Chart</a></p><p><a href="https://medium.com/@gael-berru">Article</a></p><p><a href="https://berru-g.github.io/berru-g/blog/donation.html">Donation</a></p></ul>',
+            showCloseButton: true,
+            showConfirmButton: false,
+            customClass: {
+              popup: 'custom-swal-popup',
+              closeButton: 'custom-swal-close-button',
+              content: 'custom-swal-content',
+            }
+          });
+        });
   </script>
 </body>
 <h5>Crypto tool &copy; 2025 | by <a href="https://github.com/berru-g/FiboScope/blob/main/license.txt">berru-g</a>
