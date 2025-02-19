@@ -6,11 +6,11 @@ fetch('https://api.coingecko.com/api/v3/simple/price?ids=solana,reserve-rights-t
 
     const tokenHoldings = {
       solana: 1.89,
-      ethereum:0.01,
+      ethereum:0.002,
       'reserve-rights-token': 40000,
-      near: 77.28,
+      near: 101.85,
       mysterium: 3.8,
-      aave: 1.22,
+      aave: 1.31,
     };
 
 
