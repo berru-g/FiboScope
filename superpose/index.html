@@ -126,6 +126,24 @@
             background-color: #ab9ff2;
             color: #fff;
           }
+          .theme-toggle {
+            position: fixed;
+            top: 0px;
+            right: 20px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 5px var(--shadow-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .theme-toggle:hover {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+        }
       
           a {
             color: #ab9ff2;
@@ -196,10 +214,10 @@
     </div>
     <h1>Crypto Tool</h1>
     <h3>Comparateur de Chart</h3>
-    <button onclick="toggleTheme()">🌓</button>
+    
   </header>
 <body>
-    
+  <button id="themeToggle" class="theme-toggle">Light</button>
 
     <!-- Contrôles -->
     <input type="text" id="cryptoInput" placeholder="Ajouter un token (ex: bitcoin, ethereum)">
@@ -213,13 +231,14 @@
     <button onclick="clearChart()">Effacer</button>
     
     <button onclick="exportData()">Exporter en CSV</button>
-    <input type="number" id="priceAlert" placeholder="Prix d'alerte">
-    <button onclick="setPriceAlert()">Définir une alerte</button>
+    <!--<input type="number" id="priceAlert" placeholder="Prix d'alerte">
+    <button onclick="setPriceAlert()">Définir une alerte</button>-->
 
     <!-- Graphique -->
     <div id="chart-container">
         <canvas id="cryptoChart"></canvas>
     </div>
+    <br>
     <footer>
         <div class="footer-content">
           <div class="footer-section links">
