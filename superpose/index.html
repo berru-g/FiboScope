@@ -5,6 +5,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Comparateur de CHART Crypto</title>
+  <link rel="shortcut icon" href="https://img.icons8.com/?size=100&id=bsZ8zwOxyUKF&format=png&color=000000" />
+    <link rel="apple-touch-icon" href="https://img.icons8.com/?size=100&id=bsZ8zwOxyUKF&format=png&color=000000" />
+    <meta name="description"
+        content="Analysez le potentiel des tokens, activé une alarme, comparer des chart. FiboScope est un outil basé sur le Fibonacci retracement, outil précieux pour prendre des décision en tant qu'investisseur.">
+    <meta name="keywords"
+        content="crytpo tool, Gaël berru, alarm crypto, comparateur de chart, fiboscope, tool bear market, fibonacci tool, fibonacci retracement, outil analyse token, capacité maximal d'un token, quand investir, comment savoir si j'investie au bon moment, tool retracement, traidingview, Comment analyser un token avant d'investir, Outil gratuit pour évaluer le potentiel d'une crypto-monnaie">
+    <meta name="author" content="Gael Berru.">
+    <meta name="robots" content="noai">
+    <!-- Balises Open Graph pour les réseaux sociaux -->
+    <meta property="og:title" content="fiboScope">
+    <meta property="og:description"
+        content="Analysez le potentiel des tokens, activé une alarme, comparer des chart. Découvrez les tokens ayant le plus faible pourcentage de leur capacité maximale, avec un potentiel de croissance élevé. Outils idéal pendant le bear market.">
+    <meta property="og:type" content="tool">
+    <meta property="og:url" content="https://fiboscope.netlify.app">
+    <link rel="canonical" href="https://fiboscope.netlify.app/" />
   <!--<link rel="stylesheet" href="./style.css">-->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js"></script>
@@ -71,11 +86,26 @@
       display: block;
     }
 
-    input,
-    button {
+    input {
       margin: 5px;
       padding: 8px;
       border-radius: 8px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin-top: 20px;
+      background-color: #fff;
+      color: #333;
+      border: 1px solid grey;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #ab9ff2;
+      color: #fff;
     }
 
     a {
@@ -132,7 +162,7 @@
     }
 
     a {
-      color: #58a6ff;
+      color: #ab9ff2;
     }
 
     a:hover {
@@ -144,11 +174,12 @@
   <div class="hamburger-menu">
     <img src="https://img.icons8.com/?size=100&id=36389&format=png&color=808080">
   </div>
-
+  <h1>Crypto Tool</h1>
+  <h3>Comparateur de Chart</h3>
 </header>
 
 <body>
-  <h1>Comparateur de Crypto</h1>
+  
   <input type="text" id="cryptoInput" placeholder="Entrez un token (ex: bitcoin)">
   <button onclick="addCrypto()">Ajouter</button>
   <button onclick="clearChart()">Réinitialiser</button>

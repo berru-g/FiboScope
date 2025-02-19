@@ -414,7 +414,7 @@ document.getElementById('language-selector').addEventListener('change', async (e
     hamburgerMenu.addEventListener('click', () => {
       // Utilisation de SweetAlert pour afficher la fenêtre contextuelle
       Swal.fire({
-        title: 'free Tool',
+        title: 'Other Tool',
         html: '<ul><p><a href="../index.html">fiboscope</a> fibonacci tool</p><p><a href="./alarm/index.html">Alarm Crypto</a></p><p><a href="./wallet/index.html">Wallet</a></p><p><a href="./superpose/index.html">Multi Chart</a></p><p><a href="https://medium.com/@gael-berru">Article</a></p><p><a href="https://berru-g.github.io/berru-g/blog/donation.html">Donation</a></p></ul>',
         showCloseButton: true,
         showConfirmButton: false,
