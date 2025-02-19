@@ -2,8 +2,8 @@
 <html lang="fr">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Comparateur de CHART Crypto</title>
   <link rel="shortcut icon" href="https://img.icons8.com/?size=100&id=bsZ8zwOxyUKF&format=png&color=000000" />
     <link rel="apple-touch-icon" href="https://img.icons8.com/?size=100&id=bsZ8zwOxyUKF&format=png&color=000000" />
@@ -26,189 +26,225 @@
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1.3.0"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.all.min.js"></script>
-  <style>
-    root {
-      --background-color: #f1f1f1;
-      --text-color: #000000;
-      --primary-color: #58a6ff;
-      --secondary-color: #f1f3f4;
-      --border-color: #dcdcdc;
-      --shadow-color: rgba(0, 0, 0, 0.1);
-      --input-background: #f9f9f9;
-    }
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon"></script>
+    <style>
 
-    s *::before,
-    *::after {
-      box-sizing: border-box;
-    }
+        .dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
 
-    body {
-      margin: 20px;
-      background-color: var(--background-color);
-      color: white;
-      font-family: sans-serif;
-      text-align: center;
-    }
+        .dark-mode #cryptoChart {
+            filter: invert(1);
+        }
 
-    header {
-      margin-top: 20px;
-      margin-left: 20px;
-      color: grey;
-    }
+        #chart-container {
+            width: 100%;
+            height: 500px;
+        }
+        root {
+            --background-color: #f1f1f1;
+            --text-color: #000000;
+            --primary-color: #58a6ff;
+            --secondary-color: #f1f3f4;
+            --border-color: #dcdcdc;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --input-background: #f9f9f9;
+          }
+      
+          s *::before,
+          *::after {
+            box-sizing: border-box;
+          }
+      
+          body {
+            margin: 20px;
+            background-color: var(--background-color);
+            color: white;
+            font-family: sans-serif;
+            text-align: center;
+          }
+      
+          header {
+            margin-top: 20px;
+            margin-left: 20px;
+            color: grey;
+          }
+      
+          .hamburger-menu {
+            width: 40px;
+            height: 20px;
+            top: 20px;
+            left: 20px;
+            position: fixed;
+            color: grey;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+          }
+      
+          .hamburger-menu span {
+            width: 100%;
+            height: 2px;
+            background-color: grey;
+          }
+      
+          span {
+            text-decoration: none;
+            color: grey;
+          }
+      
+          canvas {
+            width: 100%;
+            margin: 20px auto;
+            display: block;
+          }
+      
+          input, select {
+            margin: 5px;
+            padding: 8px;
+            border-radius: 8px;
+          }
+      
+          button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #fff;
+            color: #333;
+            border: 1px solid grey;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+          }
+      
+          button:hover {
+            background-color: #ab9ff2;
+            color: #fff;
+          }
+      
+          a {
+            color: #ab9ff2;
+            text-decoration: none;
+          }
+      
+          a:hover {
+            color: grey;
+            text-decoration: none;
+          }
+      
+          footer {
+            width: 100%;
+            height: auto;
+            background: transparent;
+            color: grey;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0px -2px 0px -2px #a7a6a6;
+      
+          }
+      
+          .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+          }
+      
+          .footer-section {
+            margin: 1rem;
+          }
+      
+          .footer-section h3 {
+            margin-bottom: 1rem;
+          }
+      
+          .footer-section ul {
+            list-style: none;
+            padding: 0;
+          }
+      
+          .footer-section ul li {
+            margin-bottom: 0.5rem;
+          }
+      
+          .footer-section ul li a {
+            color: #ab9ff2;
+            text-decoration: none;
+          }
+      
+          .footer-section ul li a:hover {
+            color: grey;
+          }
+      
+          a {
+            color: #ab9ff2;
+          }
+      
+          a:hover {
+            color: grey;
+          }
 
-    .hamburger-menu {
-      width: 40px;
-      height: 20px;
-      top: 20px;
-      left: 20px;
-      position: fixed;
-      color: grey;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      cursor: pointer;
-    }
-
-    .hamburger-menu span {
-      width: 100%;
-      height: 2px;
-      background-color: grey;
-    }
-
-    span {
-      text-decoration: none;
-      color: grey;
-    }
-
-    canvas {
-      width: 100%;
-      margin: 20px auto;
-      display: block;
-    }
-
-    input {
-      margin: 5px;
-      padding: 8px;
-      border-radius: 8px;
-    }
-
-    button {
-      padding: 10px 20px;
-      margin-top: 20px;
-      background-color: #fff;
-      color: #333;
-      border: 1px solid grey;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    button:hover {
-      background-color: #ab9ff2;
-      color: #fff;
-    }
-
-    a {
-      color: #ab9ff2;
-      text-decoration: none;
-    }
-
-    a:hover {
-      color: grey;
-      text-decoration: none;
-    }
-
-    footer {
-      width: 100%;
-      height: auto;
-      background: transparent;
-      color: grey;
-      padding: 2rem 1rem;
-      text-align: center;
-      box-shadow: 0px -2px 0px -2px #a7a6a6;
-
-    }
-
-    .footer-content {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-    }
-
-    .footer-section {
-      margin: 1rem;
-    }
-
-    .footer-section h3 {
-      margin-bottom: 1rem;
-    }
-
-    .footer-section ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .footer-section ul li {
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-section ul li a {
-      color: #ab9ff2;
-      text-decoration: none;
-    }
-
-    .footer-section ul li a:hover {
-      color: grey;
-    }
-
-    a {
-      color: #ab9ff2;
-    }
-
-    a:hover {
-      color: grey;
-    }
-  </style>
+    </style>
 </head>
 <header>
-  <div class="hamburger-menu">
-    <img src="https://img.icons8.com/?size=100&id=36389&format=png&color=808080">
-  </div>
-  <h1>Crypto Tool</h1>
-  <h3>Comparateur de Chart</h3>
-</header>
-
-<body>
-  
-  <input type="text" id="cryptoInput" placeholder="Entrez un token (ex: bitcoin)">
-  <button onclick="addCrypto()">Ajouter</button>
-  <button onclick="clearChart()">Réinitialiser</button>
-  <canvas id="cryptoChart"></canvas>
-  <br>
-  <footer>
-    <div class="footer-content">
-      <div class="footer-section links">
-        <h3>Other tool</h3>
-        <ul>
-          <li><a href="../index.html">FiboScope</a></li>
-          <li><a href="../wallet/index.html">Wallet</a></li>
-          <li><a href="../alarm/index.html">Alarm</a></li>
-
-        </ul>
-      </div>
-      <div class="footer-section links">
-        <h3>Libre acces</h3>
-        <ul>
-          <li><a href="https://savoir-relatif-et-absolu.netlify.app/#espace-commentaire">Contact</a></li>
-          <li><a href="https://github.com/berru-g/FiboScope/tree/main/superpose">Code source</a></li>
-          <li><a href="https://berru-g.github.io/berru-g/blog/donation.html">donation</a></li>
-        </ul>
-      </div>
+    <div class="hamburger-menu">
+      <img src="https://img.icons8.com/?size=100&id=36389&format=png&color=808080">
     </div>
-    <h5>Crypto tool &copy; 2025 | by <a href="https://github.com/berru-g/FiboScope/blob/main/license.txt">berru-g</a>
-    </h5>
-  </footer>
-  <script src="V2.js"></script>
+    <h1>Crypto Tool</h1>
+    <h3>Comparateur de Chart</h3>
+    <button onclick="toggleTheme()">🌓</button>
+  </header>
+<body>
+    
+
+    <!-- Contrôles -->
+    <input type="text" id="cryptoInput" placeholder="Ajouter un token (ex: bitcoin, ethereum)">
+    <select id="period">
+        <option value="7">7 jours</option>
+        <option value="30" selected>30 jours</option>
+        <option value="90">90 jours</option>
+        <option value="365">1 an</option>
+    </select>
+    <button onclick="addCrypto()">Ajouter</button>
+    <button onclick="clearChart()">Effacer</button>
+    
+    <button onclick="exportData()">Exporter en CSV</button>
+    <input type="number" id="priceAlert" placeholder="Prix d'alerte">
+    <button onclick="setPriceAlert()">Définir une alerte</button>
+
+    <!-- Graphique -->
+    <div id="chart-container">
+        <canvas id="cryptoChart"></canvas>
+    </div>
+    <footer>
+        <div class="footer-content">
+          <div class="footer-section links">
+            <h3>Other tool</h3>
+            <ul>
+              <li><a href="../index.html">FiboScope</a></li>
+              <li><a href="../wallet/index.html">Wallet</a></li>
+              <li><a href="../alarm/index.html">Alarm</a></li>
+    
+            </ul>
+          </div>
+          <div class="footer-section links">
+            <h3>Libre acces</h3>
+            <ul>
+              <li><a href="https://savoir-relatif-et-absolu.netlify.app/#espace-commentaire">Contact</a></li>
+              <li><a href="https://github.com/berru-g/FiboScope/tree/main/superpose">Code source</a></li>
+              <li><a href="https://berru-g.github.io/berru-g/blog/donation.html">donation</a></li>
+            </ul>
+          </div>
+        </div>
+        <h5>Crypto tool &copy; 2025 | by <a href="https://github.com/berru-g/FiboScope/blob/main/license.txt">berru-g</a>
+        </h5>
+      </footer>
+
+    <script src="V2.js"></script>
 </body>
 
 </html>
