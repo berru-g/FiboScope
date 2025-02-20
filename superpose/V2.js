@@ -31,6 +31,7 @@ let chart;
                 return null;
             }
         }
+     
 
         // Fonction pour ajouter un crypto au graphique
         async function addCrypto() {
@@ -41,7 +42,7 @@ let chart;
             const token = tokens.find(t => t.id === crypto || t.symbol === crypto);
 
             if (!token) {
-                alert("Token non trouvé. Essayez un autre nom ou symbole.");
+                alert("Notez le nom complet avec un tiret si nécessaire. Ex: pour btc notez bitcoin, pour injective notez injective-protocol, pour Akash notez akash-network, pour RSR notez reserve-rights-token etc");
                 return;
             }
 
