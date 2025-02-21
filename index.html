@@ -12,6 +12,7 @@
        Contact : https://savoir-relatif-et-absolu.netlify.app/#espace-commentaire
     ============================================
 -->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,7 +41,7 @@
     <script src="https://cdn.plot.ly/plotly-2.24.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.all.min.js"></script>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -107,16 +108,37 @@
 </head>
 <header>
     <div class="hamburger-menu">
-      <img src="https://img.icons8.com/?size=100&id=36389&format=png&color=808080">
+        <img src="https://img.icons8.com/?size=100&id=36389&format=png&color=808080">
     </div>
     <h1>Crypto Tool</h1>
     <h3>FiboScope fibonacci retracement</h3>
-  </header>
+</header>
+<button id="installApp" class="start">📲 Installer l’application</button>
+
+<script>
+    let deferredPrompt;
+
+    window.addEventListener("beforeinstallprompt", (event) => {
+        event.preventDefault();
+        deferredPrompt = event;
+        document.getElementById("installApp").style.display = "block";
+
+        document.getElementById("installApp").addEventListener("click", () => {
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === "accepted") {
+                    console.log("L’utilisateur a installé l’application !");
+                }
+                deferredPrompt = null;
+            });
+        });
+    });
+</script>
 
 <body>
 
     <button id="themeToggle" class="theme-toggle">Light</button>
-    
+
     <section>
         <!--<div id="language-selector">
             <a href="/fr/">🇫🇷 </a> | <a href="/en/">🇬🇧 </a>
@@ -154,12 +176,12 @@
     <div id="result"></div>
     <br>
 
-    
-        
-        <script defer src="https://www.livecoinwatch.com/static/lcw-widget.js"></script>
-        <div class="livecoinwatch-widget-5" lcw-base="USDC" lcw-color-tx="#999999" lcw-marquee-1="coins"
-            lcw-marquee-2="movers" lcw-marquee-items="10"></div>
-        
+
+
+    <script defer src="https://www.livecoinwatch.com/static/lcw-widget.js"></script>
+    <div class="livecoinwatch-widget-5" lcw-base="USDC" lcw-color-tx="#999999" lcw-marquee-1="coins"
+        lcw-marquee-2="movers" lcw-marquee-items="10"></div>
+
     </div>
 
     <br>
@@ -265,10 +287,11 @@
                 </ul>
             </div>
         </div>
-        <h5>FiboScope &copy; 2025 | tool by <a href="https://github.com/berru-g/FiboScope/blob/main/license.txt">berru-g</a>
+        <h5>FiboScope &copy; 2025 | tool by <a
+                href="https://github.com/berru-g/FiboScope/blob/main/license.txt">berru-g</a>
         </h5>
     </footer>
-    
+
     <script src="script2.js"></script>
 </body>
 
