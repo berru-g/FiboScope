@@ -119,12 +119,14 @@
     let deferredPrompt;
 
     window.addEventListener("beforeinstallprompt", (event) => {
+        console.log("beforeinstallprompt détecté !");
         event.preventDefault();
         deferredPrompt = event;
         document.getElementById("installApp").style.display = "block";
 
         document.getElementById("installApp").addEventListener("click", () => {
             deferredPrompt.prompt();
+            console.log("Bouton cliqué !");
             deferredPrompt.userChoice.then((choiceResult) => {
                 if (choiceResult.outcome === "accepted") {
                     console.log("L’utilisateur a installé l’application !");
