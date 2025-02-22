@@ -46,6 +46,6 @@ De plus : les données présentées ( API de [CoinGecko.com](https://www.coingec
 -   🪙 Si cet outil vous est utile est que [vous souhaitez faire un don](https://savoir-relatif-et-absolu.netlify.app/donation) 😉
 -   ⚙️ ou [une remarque pour une amélioration](https://savoir-relatif-et-absolu.netlify.app/index.html/#espace-commentaire) du tool.
 
-
+<img width="402" alt="Capture d'écran_20250222_010520" src="https://github.com/user-attachments/assets/52213122-849f-4cb3-9779-04d95263dac2" />
 
 MIT License with Non-Commercial Clause
